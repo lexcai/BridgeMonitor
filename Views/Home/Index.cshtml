@@ -1,28 +1,31 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
-@model List<Boat>
+@model Boat;
 
 <h1>Prochaine fermeture</h1>
 
 <table class="table">
     <thead>
         <tr>
-            <th>Nom du bateau</th>
-            <th>Type Fermeture</th>
-            <th>Date Fermeture</th>
-            <th>Date Reouverture</th>
+            <th>Prochaine fermeture</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var boat in Model)
-        {
-            <tr>
-                <td>@boat._BoatName</td>
-                <td>@boat._ClosingType</td>
-                <td>@boat._ClosingDate</td>
-                <td>@boat._ReopeningDate</td>
-            </tr>
-        }
+        <tr>
+
+            <th>Prochaine Fermeture:</th>
+            <td>@Model._ClosingDate.ToString("dddd d MMMM, hh:mm, yyyy")</td>
+            <th>Prochaine Ouverture:</th>
+            <td>@Model._ReopeningDate.ToString("dddd d MMMM, hh:mm, yyyy")</td>
+            <th>Prochaine Interaction(Bateau ou Maintenance):</th>
+            <td>@Model._BoatName</td>
+            <th>Durée de la prochaine fermeture:</th>
+            <td> Heures.</td>
+            <th>Temps avant la prochaine fermeture:</th>
+            <td> Heures.</td>
+            <th>Risque de bouchons:</th>
+            <td></td>
+        </tr>
     </tbody>
 </table>

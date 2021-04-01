@@ -22,8 +22,8 @@ namespace BridgeMonitor.Controllers
 
         public IActionResult Index()
         {
-            var boatList = new Boats();
-            return View(boatList._boatsInfo);
+            var boatInfo = new Boats();
+            return View(boatInfo._NextClosing);
         }
 
         private static List<Boat> GetBoatsFromApi()
