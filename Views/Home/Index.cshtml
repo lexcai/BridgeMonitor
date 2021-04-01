@@ -1,8 +1,28 @@
 ﻿@{
     ViewData["Title"] = "Home";
 }
+@model List<Boat>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<h1>Liste des stations</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Nom du bateau</th>
+            <th>Type Fermeture</th>
+            <th>Date Fermeture</th>
+            <th>Date Reouverture</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var boat in Model)
+        {
+            <tr>
+                <td>@boat.BoatName</td>
+                <td>@boat.ClosingType</td>
+                <td>@boat.ClosingDate</td>
+                <td>@boat.ReopeningDate</td>
+            </tr>
+        }
+    </tbody>
+</table>
