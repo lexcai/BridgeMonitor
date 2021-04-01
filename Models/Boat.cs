@@ -6,13 +6,13 @@ namespace BridgeMonitor.Models
     public class Boat
     {
         [JsonProperty("boat_name")]
-        public string BoatName { get; set; }
+        public string _BoatName { get; set; }
         [JsonProperty("closing_type")]
-        public string ClosingType { get; set; }
+        public string _ClosingType { get; set; }
         [JsonProperty("closing_date")]
-        public DateTime ClosingDate { get; set; }
+        public DateTime _ClosingDate { get; set; }
         [JsonProperty("reopening_date")]
-        public DateTime ReopeningDate { get; set; }
+        public DateTime _ReopeningDate { get; set; }
 
     }
 }

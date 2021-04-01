@@ -1,31 +1,19 @@
-﻿using BridgeMonitor.Models;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
+﻿using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Net.Http;
-using System.Linq;
-using System.Threading.Tasks;
+using BridgeMonitor.Models;
 
-namespace BridgeMonitor.Controllers
+namespace BridgeMonitor.Models
 {
-    public class HomeController : Controller
+    public class Boats : Boat
     {
-        private readonly ILogger<HomeController> _logger;
+        public List<Boat> _boatsInfo;
 
-        public HomeController(ILogger<HomeController> logger)
+        public Boats()
         {
-            _logger = logger;
-        }
+            _boatsInfo = new List<Boat>(GetBoatsFromApi());
 
-        public IActionResult Index()
-        {
-            var boatList = new Boats();
-            return View(boatList._boatsInfo);
         }
-
         private static List<Boat> GetBoatsFromApi()
         {
             //Création un HttpClient (= outil qui va permettre d'interroger une URl via une requête HTTP)
@@ -42,17 +30,5 @@ namespace BridgeMonitor.Controllers
                 return result;
             }
         }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
     }
 }
-
