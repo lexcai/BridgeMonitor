@@ -1,6 +1,58 @@
 ﻿@{
-    ViewData["Title"] = "Privacy Policy";
+    ViewData["Title"] = "Privacy";
 }
-<h1>@ViewData["Title"]</h1>
+@model List<Boat>;
 
-<p>Use this page to detail your site's privacy policy.</p>
+<h1>Prochaine fermeture</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Prochaine fermeture</th>
+            <th>Prochaine Ouverture:</th>
+            <th>Prochaine Interaction(Bateau ou Maintenance):</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var Boat in Model)
+        {
+            @if (Boat._ClosingDate > DateTime.Today ) {
+            <tr>
+                <td>@Boat._ClosingDate.ToString("dddd d MMMM, hh:mm, yyyy")</td>
+
+                <td>@Boat._ReopeningDate.ToString("dddd d MMMM, hh:mm, yyyy")</td>
+
+                <td>@Boat._BoatName</td>
+            </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<h1>Précedente fermeture</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Prochaine fermeture</th>
+            <th>Prochaine Ouverture:</th>
+            <th>Prochaine Interaction(Bateau ou Maintenance):</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var Boat in Model)
+        {
+            @if (Boat._ClosingDate < DateTime.Today) {
+            <tr>
+                <td>@Boat._ClosingDate.ToString("dddd d MMMM, hh:mm, yyyy")</td>
+
+                <td>@Boat._ReopeningDate.ToString("dddd d MMMM, hh:mm, yyyy")</td>
+
+                <td>@Boat._BoatName</td>
+            </tr>
+                }
+            }
+    </tbody>
+</table>

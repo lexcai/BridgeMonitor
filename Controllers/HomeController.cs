@@ -45,7 +45,8 @@ namespace BridgeMonitor.Controllers
 
         public IActionResult Privacy()
         {
-            return View();
+            var AllCLose = GetBoatsFromApi();
+            return View(AllCLose);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
